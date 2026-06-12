@@ -1,0 +1,7 @@
+students=[]
+
+teachers=[]
+
+classrooms=[]
+
+subjects=[]
