@@ -5,3 +5,5 @@ teachers=[]
 classrooms=[]
 
 subjects=[]
+
+exams=[]

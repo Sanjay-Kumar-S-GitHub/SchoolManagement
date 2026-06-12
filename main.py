@@ -2,18 +2,21 @@ from EntityManager.ClassroomManager import ClassroomManager
 from EntityManager.TeacherManager import TeacherManager
 from EntityManager.StudentManager import StudentManager
 from EntityManager.SubjectManager import SubjectManager
+from EntityManager.ExamManager import ExamManager
 
 def main():
     studentManager=StudentManager()
     teacherManager=TeacherManager()
     subjectManager=SubjectManager()
     classroomManager=ClassroomManager()
+    examManager=ExamManager()
     while True:
         print("Menu:")
         print("1. Manage classrooms")
         print("2. Manage subjects")
         print("3. Manage teachers")
         print("4. Manage students")
+        print("5. Manage exams")
         option=input("Select an option from above: ")
         if option=='1':
             again=True
@@ -23,7 +26,8 @@ def main():
                 print("1. Add classroom")
                 print("2. Remove classroom")
                 print("3. View classroom")
-                print("4. Exit to main menu")
+                print("4. View all classrooms")
+                print("5. Exit to main menu")
                 option1=input("Select an option from above: ")
                 if option1=='1':
                     classroomManager.addClassroom()
@@ -62,6 +66,18 @@ def main():
                         else:
                             print('Invalid input for Y/N')
                 elif option1=='4':
+                    classroomManager.viewAllClassrooms()
+                    validYN=False
+                    while validYN is False:
+                        exit=input('Do you want to exit: (Y/N): ').upper()
+                        if exit=='Y':
+                            validYN=True
+                            again=False
+                        elif exit=='N':
+                            validYN=True
+                        else:
+                            print('Invalid input for Y/N')
+                elif option1=='5':
                     again=False
                 else:
                     print("Invalid input")  
@@ -75,7 +91,8 @@ def main():
                 print("2. Remove subject")
                 print("3. View subject")
                 print("4. edit subject")
-                print("5. Exit to main menu")
+                print("5. View all subjects")
+                print("6. Exit to main menu")
                 option2=input("Select an option from above: ")
                 if option2=='1':
                     subjectManager.addSubject()
@@ -126,6 +143,18 @@ def main():
                         else:
                             print('Invalid input for Y/N')
                 elif option2=='5':
+                    subjectManager.viewAllSubjects()
+                    validYN=False
+                    while validYN is False:
+                        exit=input('Do you want to exit: (Y/N): ').upper()
+                        if exit=='Y':
+                            validYN=True
+                            again=False
+                        elif exit=='N':
+                            validYN=True
+                        else:
+                            print('Invalid input for Y/N')
+                elif option2=='6':
                     again=False
                 else:
                     print("Invalid input")  
@@ -139,7 +168,8 @@ def main():
                 print("2. Remove teacher")
                 print("3. View teacher")
                 print("4. edit teacher")
-                print("5. Exit to main menu")
+                print("5. View all teachers")
+                print("6. Exit to main menu")
                 option3=input("Select an option from above: ")
                 if option3=='1':
                     teacherManager.addTeacher()
@@ -190,6 +220,18 @@ def main():
                         else:
                             print('Invalid input for Y/N')
                 elif option3=='5':
+                    teacherManager.viewAllTeachers()
+                    validYN=False
+                    while validYN is False:
+                        exit=input('Do you want to exit: (Y/N): ').upper()
+                        if exit=='Y':
+                            validYN=True
+                            again=False
+                        elif exit=='N':
+                            validYN=True
+                        else:
+                            print('Invalid input for Y/N')
+                elif option3=='6':
                     again=False
                 else:
                     print("Invalid input")  
@@ -203,7 +245,8 @@ def main():
                 print("2. Remove student")
                 print("3. View student")
                 print("4. edit student")
-                print("5. Exit to main menu")
+                print("5. View all students")
+                print("6. Exit to main menu")
                 option4=input("Select an option from above: ")
                 if option4=='1':
                     studentManager.addStudent()
@@ -254,9 +297,59 @@ def main():
                         else:
                             print('Invalid input for Y/N')
                 elif option4=='5':
+                    studentManager.viewAllStudents()
+                    validYN=False
+                    while validYN is False:
+                        exit=input('Do you want to exit: (Y/N): ').upper()
+                        if exit=='Y':
+                            validYN=True
+                            again=False
+                        elif exit=='N':
+                            validYN=True
+                        else:
+                            print('Invalid input for Y/N')
+                elif option4=='6':
                     again=False
                 else:
                     print("Invalid input")  
+                print("\n")
+        elif option=='5':
+            again=True
+            while again:
+                print("\n")
+                print("Exams Menu:")
+                print("1. Add exam marks")
+                print("2. View exam marks")
+                print("3. Exit to main menu")
+                option5=input("Select an option from above: ")
+                if option5=='1':
+                    examManager.addExamMarks()
+                    validYN=False
+                    while validYN is False:
+                        exit=input('Do you want to exit: (Y/N): ').upper()
+                        if exit=='Y':
+                            validYN=True
+                            again=False
+                        elif exit=='N':
+                            validYN=True
+                        else:
+                            print('Invalid input for Y/N')
+                elif option5=='2':
+                    examManager.viewExamMarks()
+                    validYN=False
+                    while validYN is False:
+                        exit=input('Do you want to exit: (Y/N): ').upper()
+                        if exit=='Y':
+                            validYN=True
+                            again=False
+                        elif exit=='N':
+                            validYN=True
+                        else:
+                            print('Invalid input for Y/N')
+                elif option5=='3':
+                    again=False
+                else:
+                    print("Invalid input")
                 print("\n")
         else:
             print("Invalid input")
