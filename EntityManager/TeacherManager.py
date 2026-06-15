@@ -136,3 +136,4 @@ class TeacherManager:
                 data.append([teacher.teacher_id,teacher.teacher_name,'None','No subject assigned'])
         df=pd.DataFrame(data,columns=['Teacher ID','Teacher Name','Subject ID','Subject Name'])
         print(df.to_string(index=False))
+        print("\n")

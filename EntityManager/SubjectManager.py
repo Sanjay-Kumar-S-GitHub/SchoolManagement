@@ -106,3 +106,4 @@ class SubjectManager:
                 data.append([subject.subject_id,subject.subject_name,'No teacher assigned'])
         df=pd.DataFrame(data,columns=['Subject ID','Subject Name','Teacher Name'])
         print(df.to_string(index=False))
+        print("\n")

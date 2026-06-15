@@ -102,5 +102,6 @@ class ExamManager:
         if found:
             df=pd.DataFrame(data,columns=['Subject ID','Subject Name','Student ID','Student Name','Marks'])
             print(df.to_string(index=False))
+            print("\n")
         else:
             print(f"No exam marks found for class id: {class_id}")

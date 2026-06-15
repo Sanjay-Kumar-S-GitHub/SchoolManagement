@@ -166,3 +166,4 @@ class StudentManager:
             data.append([student.student_id,student.student_name,student.class_id,student.phone_number])
         df=pd.DataFrame(data,columns=['Student ID','Student Name','Class ID','Phone Number'])
         print(df.to_string(index=False))
+        print("\n")

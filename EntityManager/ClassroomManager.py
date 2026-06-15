@@ -80,3 +80,4 @@ class ClassroomManager:
                 data.append([classroom.class_id,'None','None'])
         df=pd.DataFrame(data,columns=['Class ID','Student ID','Student Name'])
         print(df.to_string(index=False))
+        print("\n")
