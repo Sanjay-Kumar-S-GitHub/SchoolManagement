@@ -68,13 +68,15 @@ class ClassroomManager:
         if len(classrooms)==0:
             print('No classrooms found')
             return
+        import pandas as pd
+        data=[]
         for classroom in classrooms:
-            print(f"class id: {classroom.class_id}")
-            student_count=0
+            has_students=False
             for student in students:
                 if student.class_id==classroom.class_id:
-                    print(f"Student id: {student.student_id}")
-                    print(f"Student name: {student.student_name}")
-                    student_count+=1
-            print(f"Student count: {student_count}")
-            print("\n")
+                    data.append([classroom.class_id,student.student_id,student.student_name])
+                    has_students=True
+            if not has_students:
+                data.append([classroom.class_id,'None','None'])
+        df=pd.DataFrame(data,columns=['Class ID','Student ID','Student Name'])
+        print(df.to_string(index=False))

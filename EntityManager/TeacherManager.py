@@ -124,15 +124,15 @@ class TeacherManager:
         if len(teachers)==0:
             print('No teachers found')
             return
+        import pandas as pd
+        data=[]
         for teacher in teachers:
-            print(f"teacher id: {teacher.teacher_id}")
-            print(f"teacher name: {teacher.teacher_name}")
-            subject_not_found=True
+            subject_found=False
             for subject in subjects:
                 if subject.subject_id==teacher.subject_id:
-                    print(f"Subject id: {subject.subject_id}")
-                    print(f"subject name: {subject.subject_name}")
-                    subject_not_found=False
-            if subject_not_found:
-                print('No subject assigned to this teacher')
-            print("\n")
+                    data.append([teacher.teacher_id,teacher.teacher_name,subject.subject_id,subject.subject_name])
+                    subject_found=True
+            if not subject_found:
+                data.append([teacher.teacher_id,teacher.teacher_name,'None','No subject assigned'])
+        df=pd.DataFrame(data,columns=['Teacher ID','Teacher Name','Subject ID','Subject Name'])
+        print(df.to_string(index=False))

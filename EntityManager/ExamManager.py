@@ -82,6 +82,8 @@ class ExamManager:
             if valid_class_id is False:
                 print('Invalid class id')
         found=False
+        import pandas as pd
+        data=[]
         for exam in exams:
             if exam.class_id==class_id:
                 subject_name=None
@@ -89,15 +91,16 @@ class ExamManager:
                     if subject.subject_id==exam.subject_id:
                         subject_name=subject.subject_name
                         break
-                print(f"Subject id: {exam.subject_id} (Name: {subject_name})")
                 for student_id,mark in exam.marks.items():
                     student_name=None
                     for student in students:
                         if student.student_id==student_id:
                             student_name=student.student_name
                             break
-                    print(f"Student name: {student_name} (ID: {student_id}) - Marks: {mark}")
-                print("\n")
+                    data.append([exam.subject_id,subject_name,student_id,student_name,mark])
                 found=True
-        if not found:
+        if found:
+            df=pd.DataFrame(data,columns=['Subject ID','Subject Name','Student ID','Student Name','Marks'])
+            print(df.to_string(index=False))
+        else:
             print(f"No exam marks found for class id: {class_id}")

@@ -160,9 +160,9 @@ class StudentManager:
         if len(students)==0:
             print('No students found')
             return
+        import pandas as pd
+        data=[]
         for student in students:
-            print(f"Student id: {student.student_id}")
-            print(f"Student name: {student.student_name}")
-            print(f"class id: {student.class_id}")
-            print(f"Phone number: {student.phone_number}")
-            print("\n")
+            data.append([student.student_id,student.student_name,student.class_id,student.phone_number])
+        df=pd.DataFrame(data,columns=['Student ID','Student Name','Class ID','Phone Number'])
+        print(df.to_string(index=False))
