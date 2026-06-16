@@ -319,10 +319,9 @@ def main():
                 print("\n")
                 print("Exams Menu:")
                 print("1. Add exam marks")
-                print("2. View exam marks by class")
-                print("3. View exam marks by subject")
-                print("4. Edit exam marks")
-                print("5. Exit to main menu")
+                print("2. View exam marks")
+                print("3. Edit exam marks")
+                print("4. Exit to main menu")
                 option5=input("Select an option from above: ")
                 if option5=='1':
                     examManager.addExamMarks()
@@ -337,7 +336,7 @@ def main():
                         else:
                             print('Invalid input for Y/N')
                 elif option5=='2':
-                    examManager.viewExamMarksByClass()
+                    examManager.viewExamMarks()
                     validYN=False
                     while validYN is False:
                         exit=input('Do you want to exit: (Y/N): ').upper()
@@ -349,18 +348,6 @@ def main():
                         else:
                             print('Invalid input for Y/N')
                 elif option5=='3':
-                    examManager.viewExamMarksBySubject()
-                    validYN=False
-                    while validYN is False:
-                        exit=input('Do you want to exit: (Y/N): ').upper()
-                        if exit=='Y':
-                            validYN=True
-                            again=False
-                        elif exit=='N':
-                            validYN=True
-                        else:
-                            print('Invalid input for Y/N')
-                elif option5=='4':
                     examManager.editExamMarks()
                     validYN=False
                     while validYN is False:
@@ -372,7 +359,7 @@ def main():
                             validYN=True
                         else:
                             print('Invalid input for Y/N')
-                elif option5=='5':
+                elif option5=='4':
                     again=False
                 else:
                     print("Invalid input")

@@ -19,7 +19,16 @@ class ClassroomManager:
                 print('Class id already exists')
             else:
                 valid=True
-        createdClassroom=Classroom(class_id)
+        valid_capacity=False
+        capacity=None
+        while valid_capacity is False:
+            capacity=input('Enter classroom capacity: ')
+            if capacity.isdigit() and int(capacity)>0:
+                valid_capacity=True
+                capacity=int(capacity)
+            else:
+                print('Invalid capacity')
+        createdClassroom=Classroom(class_id,capacity)
         classrooms.append(createdClassroom)
         print('Classroom added successfully')
 
@@ -33,7 +42,7 @@ class ClassroomManager:
             if classroom.class_id==class_id:
                 classrooms.remove(classroom)
                 for student in students:
-                    if student.class_id==student.class_id:
+                    if student.class_id==class_id:
                         student.class_id=None
                 print(f"Classroom with class id: {class_id} removed successfully")
                 not_found=False
@@ -50,6 +59,7 @@ class ClassroomManager:
         for classroom in classrooms:
             if classroom.class_id==class_id:
                 print(f"class id: {classroom.class_id}")
+                print(f"capacity: {classroom.capacity}")
                 student_count=0
                 for student in students:
                     if student.class_id==classroom.class_id:
@@ -74,10 +84,10 @@ class ClassroomManager:
             has_students=False
             for student in students:
                 if student.class_id==classroom.class_id:
-                    data.append([classroom.class_id,student.student_id,student.student_name])
+                    data.append([classroom.class_id,classroom.capacity,student.student_id,student.student_name])
                     has_students=True
             if not has_students:
-                data.append([classroom.class_id,'None','None'])
-        df=pd.DataFrame(data,columns=['Class ID','Student ID','Student Name'])
+                data.append([classroom.class_id,classroom.capacity,'None','None'])
+        df=pd.DataFrame(data,columns=['Class ID','Capacity','Student ID','Student Name'])
         print(df.to_string(index=False))
         print("\n")
