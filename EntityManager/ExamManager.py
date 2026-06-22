@@ -1,4 +1,4 @@
-from Storage.Data import exams, classrooms, subjects, students
+from Storage.Data import exams, classrooms, subjects, students, saveExams
 from Entities.ExamEntity import Exam
 
 class ExamManager:
@@ -96,6 +96,7 @@ class ExamManager:
         if not exists:
             createdExam=Exam(class_id,subject_id,marks,exam_date,max_marks,exam_name)
             exams.append(createdExam)
+        saveExams()
         print('Exam marks added successfully')
 
     def viewExamMarks(self):
@@ -288,4 +289,5 @@ class ExamManager:
                     query_done=True
                 else:
                     print('Invalid input')
+        saveExams()
         print('Exam marks edited successfully')

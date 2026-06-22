@@ -1,4 +1,4 @@
-from Storage.Data import classrooms, students
+from Storage.Data import classrooms, students, saveClassrooms, saveStudents
 from Entities.Classroom import Classroom
 
 class ClassroomManager:
@@ -30,6 +30,7 @@ class ClassroomManager:
                 print('Invalid capacity')
         createdClassroom=Classroom(class_id,capacity)
         classrooms.append(createdClassroom)
+        saveClassrooms()
         print('Classroom added successfully')
 
     def removeClassroom(self):
@@ -44,6 +45,8 @@ class ClassroomManager:
                 for student in students:
                     if student.class_id==class_id:
                         student.class_id=None
+                saveClassrooms()
+                saveStudents()
                 print(f"Classroom with class id: {class_id} removed successfully")
                 not_found=False
                 break

@@ -1,6 +1,6 @@
 from Entities.SubjectEntity import Subject
 # from Entities.TeacherEntity import Teacher
-from Storage.Data import subjects, teachers
+from Storage.Data import subjects, teachers, saveSubjects, saveTeachers
 
 class SubjectManager:
     def addSubject(self):
@@ -28,6 +28,7 @@ class SubjectManager:
                 valid_name=True
         createdSubject=Subject(subject_id,subject_name)
         subjects.append(createdSubject)
+        saveSubjects()
         print('Subject added successfully')
 
     def removeSubject(self):
@@ -39,6 +40,8 @@ class SubjectManager:
                 for teacher in teachers:
                     if teacher.subject_id==subject.subject_id:
                         teacher.subject_id=None
+                saveSubjects()
+                saveTeachers()
                 print(f"Subject with subject id: {subject_id} removed successfully")
                 not_found=False
                 break
@@ -86,6 +89,7 @@ class SubjectManager:
                         query_done=True
                     else:
                         print("Invalid input")  
+                saveSubjects()
                 not_found=False
         if not_found:
             print(f"No student with subject id: {subject_id} found")

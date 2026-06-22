@@ -1,4 +1,4 @@
-from Storage.Data import teachers, subjects
+from Storage.Data import teachers, subjects, saveTeachers
 from Entities.TeacherEntity import Teacher
 
 class TeacherManager:
@@ -67,6 +67,7 @@ class TeacherManager:
                 print('Invalid salary')
         createdTeacher=Teacher(teacher_id,teacher_name,subject_id,email,phone_number,salary)
         teachers.append(createdTeacher)
+        saveTeachers()
         print('Teacher added successfully')
 
     def removeTeacher(self):
@@ -75,6 +76,7 @@ class TeacherManager:
         for teacher in teachers:
             if teacher.teacher_id==teacher_id:
                 teachers.remove(teacher)
+                saveTeachers()
                 print(f"Teacher with teacher id: {teacher_id} removed successfully")
                 not_found=False
                 break
@@ -199,6 +201,7 @@ class TeacherManager:
                         query_done=True
                     else:
                         print("Invalid input")
+                saveTeachers()
                 not_found=False
                 break
         if not_found:

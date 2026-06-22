@@ -1,5 +1,5 @@
 from Entities.StudentEntity import Student
-from Storage.Data import students, classrooms
+from Storage.Data import students, classrooms, saveStudents
 
 class StudentManager:
     def addStudent(self):
@@ -96,6 +96,7 @@ class StudentManager:
                 valid_guardian=True
         createdStudent=Student(student_id,student_name,class_id,phone_number,email,date_of_birth,gender,guardian_name)
         students.append(createdStudent)
+        saveStudents()
         print('Student added successfully')
 
     def removeStudent(self):
@@ -107,6 +108,7 @@ class StudentManager:
         for student in students:
             if student.student_id==student_id:
                 students.remove(student)
+                saveStudents()
                 print(f"Student with student id: {student_id} removed successfully")
                 not_found=False
                 break
@@ -279,6 +281,7 @@ class StudentManager:
                         query_done=True
                     else:
                         print("Invalid input")
+                saveStudents()
                 not_found=False
                 break
         if not_found:
